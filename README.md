@@ -2,12 +2,12 @@
 ```
 | Table                       | Team Member  | Github Id     |
 |-----------------------------|--------------|---------------|
-| `UCSBDiningCommonsMenuItem` | Alice        | alice33       |
+| `UCSBDiningCommonsMenuItem` |  (unassigned)|               |
 | `UCSBOrganization`          | (unassigned) |               |
-| `RecommendationRequest`     | Bob          | robertg       |
-| `MenuItemReview`            | Charlie      | gauchocharlie |
-| `HelpRequest`               | Danielle     | danielle      |
-| `Articles`                  | June         | zhenbi93        |
+| `RecommendationRequest`     |  (unassigned)|               |
+| `MenuItemReview`            |  (unassigned)|               |
+| `HelpRequest`               |  (unassigned)|               |
+| `Articles`                  | June         | zhenbi93      |
 ```
 
 Instructions: <https://ucsb-cs156.github.io/s24/lab/team02.html>
