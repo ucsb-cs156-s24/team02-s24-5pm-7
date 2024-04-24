@@ -2,7 +2,7 @@
 ```
 | Table                       | Team Member  | Github Id     |
 |-----------------------------|--------------|---------------|
-| `UCSBDiningCommonsMenuItem` |  (unassigned)|               |
+| `UCSBDiningCommonsMenuItem` |  Kate        | katelarrick   |
 | `UCSBOrganization`          | (unassigned) |               |
 | `RecommendationRequest`     |  (unassigned)|               |
 | `MenuItemReview`            |  (unassigned)|               |
