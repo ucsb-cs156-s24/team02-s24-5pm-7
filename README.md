@@ -5,7 +5,7 @@
 | `UCSBDiningCommonsMenuItem` |  Kate        | katelarrick   |
 | `UCSBOrganization`          |  Aneesh      | aneeshtheplug |
 | `RecommendationRequest`     |  Adil        |  adilahmed2   |
-| `MenuItemReview`            |  (unassigned)|               |
+| `MenuItemReview`            |  Koray       | koraykondakci |
 | `HelpRequest`               |  (unassigned)|               |
 | `Articles`                  | June         | zhenbi93      |
 ```
