@@ -3,7 +3,7 @@
 | Table                       | Team Member  | Github Id     |
 |-----------------------------|--------------|---------------|
 | `UCSBDiningCommonsMenuItem` |  Kate        | katelarrick   |
-| `UCSBOrganization`          | (unassigned) |               |
+| `UCSBOrganization`          | (unassigned) | aneeshtheplug              |
 | `RecommendationRequest`     |  (unassigned)|               |
 | `MenuItemReview`            |  (unassigned)|               |
 | `HelpRequest`               |  (unassigned)|               |
