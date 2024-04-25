@@ -4,10 +4,10 @@
 |-----------------------------|--------------|---------------|
 | `UCSBDiningCommonsMenuItem` |  Kate        | katelarrick   |
 | `UCSBOrganization`          |  Aneesh      | aneeshtheplug |
-| `RecommendationRequest`     |  Adil        |  adilahmed2   |
+| `RecommendationRequest`     |  Adil        | adilahmed2    |
 | `MenuItemReview`            |  Koray       | koraykondakci |
-| `HelpRequest`               |  (unassigned)|               |
-| `Articles`                  | June         | zhenbi93      |
+| `HelpRequest`               |  Grace       | gracefeng05   |
+| `Articles`                  |  June        | zhenbi93      |
 ```
 
 Instructions: <https://ucsb-cs156.github.io/s24/lab/team02.html>
