@@ -47,6 +47,18 @@ public class UCSBRecommendationRequestController {
         return recommendation_requests;
     }
     
+
+    @Operation(summary= "Get a single recommendation request")
+    @PreAuthorize("hasRole('ROLE_USER')")
+    @GetMapping("")
+    public UCSBRecommendationRequest getById(
+            @Parameter(name="id") @RequestParam Long id) {
+                UCSBRecommendationRequest ucsbRecommendationRequest = ucsbRecommendationRequestRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException(UCSBRecommendationRequest.class, id));
+
+        return ucsbRecommendationRequest;
+    }
+
     @Operation(summary= "Create a new recommendation request")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/post")
@@ -76,5 +88,7 @@ public class UCSBRecommendationRequestController {
 
         return savedUcsbRecommendationRequest;
     }
+
+
 
 }

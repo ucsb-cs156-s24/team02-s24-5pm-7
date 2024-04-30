@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public interface UCSBRecommendationRequestRepository extends CrudRepository<UCSBRecommendationRequest, String> {
- 
+public interface UCSBRecommendationRequestRepository extends CrudRepository<UCSBRecommendationRequest, Long> {
+
 }
