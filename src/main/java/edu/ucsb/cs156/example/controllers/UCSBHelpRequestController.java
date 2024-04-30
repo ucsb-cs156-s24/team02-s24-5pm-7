@@ -88,4 +88,25 @@ public class UCSBHelpRequestController extends ApiController {
         return genericMessage("UCSBHelpRequest with id %s deleted".formatted(id));
     }
 
+    @Operation(summary= "Update a single help request")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PutMapping("")
+    public UCSBHelpRequest updateUCSBHelpRequest(
+            @Parameter(name="id") @RequestParam Long id,
+            @RequestBody @Valid UCSBHelpRequest incoming) {
+
+        UCSBHelpRequest ucsbHelpRequest = ucsbHelpRequestRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException(UCSBHelpRequest.class, id));
+
+        ucsbHelpRequest.setRequesterEmail(incoming.getRequesterEmail());
+        ucsbHelpRequest.setTeamID(incoming.getTeamID());
+        ucsbHelpRequest.setTableOrBreakoutRoom(incoming.getTableOrBreakoutRoom());
+        ucsbHelpRequest.setRequestTime(incoming.getRequestTime());
+        ucsbHelpRequest.setExplanation(incoming.getExplanation());
+        ucsbHelpRequest.setSolved(incoming.getSolved());
+
+        ucsbHelpRequestRepository.save(ucsbHelpRequest);
+
+        return ucsbHelpRequest;
+    }
 }
