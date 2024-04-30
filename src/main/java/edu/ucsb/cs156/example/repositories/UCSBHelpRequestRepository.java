@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UCSBHelpRequestRepository extends CrudRepository<UCSBHelpRequest, Long> {
-  Iterable<UCSBHelpRequest> findAllByRequesterEmail(String requesterEmail);
+
 }
