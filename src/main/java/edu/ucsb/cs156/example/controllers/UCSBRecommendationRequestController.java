@@ -35,7 +35,7 @@ import java.time.LocalDateTime;
 @RestController
 @Slf4j
 
-public class UCSBRecommendationRequestController {
+public class UCSBRecommendationRequestController extends ApiController{
     @Autowired
     UCSBRecommendationRequestRepository ucsbRecommendationRequestRepository;
 
@@ -110,6 +110,15 @@ public class UCSBRecommendationRequestController {
         return ucsbRecommendationRequest;
     }
 
+    @Operation(summary= "Delete a UCSBRecommendationRequest")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @DeleteMapping("")
+    public Object deleteUCSBRecommendationRequest(
+            @Parameter(name="id") @RequestParam Long id) {
+                UCSBRecommendationRequest ucsbRecommendationRequest = ucsbRecommendationRequestRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException(UCSBRecommendationRequest.class, id));
 
-
+        ucsbRecommendationRequestRepository.delete(ucsbRecommendationRequest);
+        return genericMessage("UCSBRecommendationRequest with id %s deleted".formatted(id));
+    }
 }
