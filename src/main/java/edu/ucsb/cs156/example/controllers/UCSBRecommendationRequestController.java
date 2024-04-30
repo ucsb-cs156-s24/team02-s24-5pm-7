@@ -55,9 +55,10 @@ public class UCSBRecommendationRequestController {
         @Parameter(name="requesterEmail") @RequestParam String requesterEmail,
         @Parameter(name="professorEmail") @RequestParam String professorEmail,
         @Parameter(name="explanation") @RequestParam String explanation,
-        @Parameter(name="date needed (in iso format, e.g. YYYY-mm-ddTHH:MM:SS; see https://en.wikipedia.org/wiki/ISO_8601)") @RequestParam("localDateTime") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dateRequested,
-        @Parameter(name="date requested (in iso format, e.g. YYYY-mm-ddTHH:MM:SS; see https://en.wikipedia.org/wiki/ISO_8601)") @RequestParam("localDateTime") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dateNeeded
-        )
+        @Parameter(name = "dateRequested") @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dateRequested,
+        @Parameter(name = "dateNeeded") @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dateNeeded,
+        @Parameter(name = "done") @RequestParam boolean done)  
+        
         throws JsonProcessingException {
 
         // For an explanation of @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
@@ -69,6 +70,7 @@ public class UCSBRecommendationRequestController {
         ucsbRecommendationRequest.setProfessorEmail(professorEmail);
         ucsbRecommendationRequest.setDateNeeded(dateNeeded);
         ucsbRecommendationRequest.setDateRequested(dateRequested);
+        ucsbRecommendationRequest.setDone(done);
 
         UCSBRecommendationRequest savedUcsbRecommendationRequest = ucsbRecommendationRequestRepository.save(ucsbRecommendationRequest);
 
