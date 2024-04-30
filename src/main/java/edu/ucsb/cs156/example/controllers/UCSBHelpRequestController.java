@@ -75,4 +75,17 @@ public class UCSBHelpRequestController extends ApiController {
 
         return savedUcsbHelpRequest;
     }
+
+    @Operation(summary= "Delete a UCSBHelpRequest")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @DeleteMapping("")
+    public Object deleteUCSBHelpRequest(
+            @Parameter(name="id") @RequestParam Long id) {
+        UCSBHelpRequest ucsbHelpRequest = ucsbHelpRequestRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException(UCSBHelpRequest.class, id));
+
+        ucsbHelpRequestRepository.delete(ucsbHelpRequest);
+        return genericMessage("UCSBHelpRequest with id %s deleted".formatted(id));
+    }
+
 }
