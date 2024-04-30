@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 
 @Tag(name = "UCSBOrganization")
-@RequestMapping("/api/ucsborganizations")
+@RequestMapping("/api/ucsborganization")
 @RestController
 @Slf4j
 public class UCSBOrganizationController extends ApiController {
