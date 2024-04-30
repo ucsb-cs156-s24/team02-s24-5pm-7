@@ -89,6 +89,27 @@ public class UCSBRecommendationRequestController {
         return savedUcsbRecommendationRequest;
     }
 
+    @Operation(summary= "Update a single recommendation request")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PutMapping("")
+    public UCSBRecommendationRequest updateUCSBRecommendationRequest(
+            @Parameter(name="id") @RequestParam Long id,
+            @RequestBody @Valid UCSBRecommendationRequest incoming) {
+
+        UCSBRecommendationRequest ucsbRecommendationRequest = ucsbRecommendationRequestRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException(UCSBRecommendationRequest.class, id));
+        
+        ucsbRecommendationRequest.setRequesterEmail(incoming.getRequesterEmail());
+        ucsbRecommendationRequest.setProfessorEmail(incoming.getProfessorEmail());
+        ucsbRecommendationRequest.setDateNeeded(incoming.getDateNeeded());
+        ucsbRecommendationRequest.setDateRequested(incoming.getDateRequested());
+        ucsbRecommendationRequest.setDone(incoming.getDone());
+
+        ucsbRecommendationRequestRepository.save(ucsbRecommendationRequest);
+
+        return ucsbRecommendationRequest;
+    }
+
 
 
 }
