@@ -23,4 +23,4 @@ repo_name: "TBD"
 repo: ucsb-cs156-s24/team02-s24-5pm-7
 owner: ucsb-cs156-s24
 repo_name: team02-s24-5pm-7
-pull_requests: [{"author":{"id":"U_kgDOBtKOXg","is_bot":false,"login":"gracefeng05","name":""},"headRefName":"Grace-HelpRequestTable","number":43,"title":"Created database table for Help Request","url":"https://github.com/ucsb-cs156-s24/team02-s24-5pm-7/pull/43"}]
+pull_requests: [{"author":{"id":"U_kgDOBtKOXg","is_bot":false,"login":"gracefeng05","name":""},"headRefName":"Grace-HelpRequestController","number":44,"title":"Create Help Request controller with GET + POST methods and testing","url":"https://github.com/ucsb-cs156-s24/team02-s24-5pm-7/pull/44"},{"author":{"id":"U_kgDOBtKOXg","is_bot":false,"login":"gracefeng05","name":""},"headRefName":"Grace-HelpRequestTable","number":43,"title":"Created database table for Help Request","url":"https://github.com/ucsb-cs156-s24/team02-s24-5pm-7/pull/43"}]
