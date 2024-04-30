@@ -3,7 +3,7 @@
       {
         "changeSet": {
           "id": "UCSBHELPREQUEST-1",
-          "author": "MattP",
+          "author": "GraceF",
           "preConditions": [
             {
               "onFail": "MARK_RAN"
@@ -36,7 +36,7 @@
                   {
                     "column": {
                       "name": "REQUESTER_EMAIL",
-                      "type": "STRING"
+                      "type": "VARCHAR(255)"
                     }
                   },
                   {
