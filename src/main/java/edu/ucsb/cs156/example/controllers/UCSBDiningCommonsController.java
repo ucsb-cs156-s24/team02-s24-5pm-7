@@ -31,7 +31,7 @@ public class UCSBDiningCommonsController extends ApiController {
     @Autowired
     UCSBDiningCommonsRepository ucsbDiningCommonsRepository;
 
-    @Operation(summary= "List all ucsb dining commons")
+    @Operation(summary = "List all ucsb dining commons")
     @PreAuthorize("hasRole('ROLE_USER')")
     @GetMapping("/all")
     public Iterable<UCSBDiningCommons> allCommonss() {
@@ -39,19 +39,17 @@ public class UCSBDiningCommonsController extends ApiController {
         return commons;
     }
 
-    @Operation(summary= "Create a new commons")
+    @Operation(summary = "Create a new commons")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/post")
     public UCSBDiningCommons postCommons(
-        @Parameter(name="code") @RequestParam String code,
-        @Parameter(name="name") @RequestParam String name,
-        @Parameter(name="hasSackMeal") @RequestParam boolean hasSackMeal,
-        @Parameter(name="hasTakeOutMeal") @RequestParam boolean hasTakeOutMeal,
-        @Parameter(name="hasDiningCam") @RequestParam boolean hasDiningCam,
-        @Parameter(name="latitude") @RequestParam double latitude,
-        @Parameter(name="longitude") @RequestParam double longitude
-        )
-        {
+            @Parameter(name = "code") @RequestParam String code,
+            @Parameter(name = "name") @RequestParam String name,
+            @Parameter(name = "hasSackMeal") @RequestParam boolean hasSackMeal,
+            @Parameter(name = "hasTakeOutMeal") @RequestParam boolean hasTakeOutMeal,
+            @Parameter(name = "hasDiningCam") @RequestParam boolean hasDiningCam,
+            @Parameter(name = "latitude") @RequestParam double latitude,
+            @Parameter(name = "longitude") @RequestParam double longitude) {
 
         UCSBDiningCommons commons = new UCSBDiningCommons();
         commons.setCode(code);
@@ -67,22 +65,22 @@ public class UCSBDiningCommonsController extends ApiController {
         return savedCommons;
     }
 
-    @Operation(summary= "Get a single commons")
+    @Operation(summary = "Get a single commons")
     @PreAuthorize("hasRole('ROLE_USER')")
     @GetMapping("")
     public UCSBDiningCommons getById(
-            @Parameter(name="code") @RequestParam String code) {
+            @Parameter(name = "code") @RequestParam String code) {
         UCSBDiningCommons commons = ucsbDiningCommonsRepository.findById(code)
                 .orElseThrow(() -> new EntityNotFoundException(UCSBDiningCommons.class, code));
 
         return commons;
     }
 
-    @Operation(summary= "Delete a UCSBDiningCommons")
+    @Operation(summary = "Delete a UCSBDiningCommons")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @DeleteMapping("")
     public Object deleteCommons(
-            @Parameter(name="code") @RequestParam String code) {
+            @Parameter(name = "code") @RequestParam String code) {
         UCSBDiningCommons commons = ucsbDiningCommonsRepository.findById(code)
                 .orElseThrow(() -> new EntityNotFoundException(UCSBDiningCommons.class, code));
 
@@ -90,18 +88,17 @@ public class UCSBDiningCommonsController extends ApiController {
         return genericMessage("UCSBDiningCommons with id %s deleted".formatted(code));
     }
 
-    @Operation(summary= "Update a single commons")
+    @Operation(summary = "Update a single commons")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PutMapping("")
     public UCSBDiningCommons updateCommons(
-            @Parameter(name="code") @RequestParam String code,
+            @Parameter(name = "code") @RequestParam String code,
             @RequestBody @Valid UCSBDiningCommons incoming) {
 
         UCSBDiningCommons commons = ucsbDiningCommonsRepository.findById(code)
                 .orElseThrow(() -> new EntityNotFoundException(UCSBDiningCommons.class, code));
 
-
-        commons.setName(incoming.getName());  
+        commons.setName(incoming.getName());
         commons.setHasSackMeal(incoming.getHasSackMeal());
         commons.setHasTakeOutMeal(incoming.getHasTakeOutMeal());
         commons.setHasDiningCam(incoming.getHasDiningCam());
