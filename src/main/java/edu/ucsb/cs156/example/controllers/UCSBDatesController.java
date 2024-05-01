@@ -35,7 +35,6 @@ public class UCSBDatesController extends ApiController {
 
     @Autowired
     UCSBDateRepository ucsbDateRepository;
-
     @Operation(summary= "List all ucsb dates")
     @PreAuthorize("hasRole('ROLE_USER')")
     @GetMapping("/all")
