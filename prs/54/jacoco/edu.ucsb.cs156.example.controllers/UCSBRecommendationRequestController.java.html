@@ -103,12 +103,13 @@ import java.time.LocalDateTime;
 <span class="fc" id="L103">        ucsbRecommendationRequest.setRequesterEmail(incoming.getRequesterEmail());</span>
 <span class="fc" id="L104">        ucsbRecommendationRequest.setProfessorEmail(incoming.getProfessorEmail());</span>
 <span class="fc" id="L105">        ucsbRecommendationRequest.setDateNeeded(incoming.getDateNeeded());</span>
-<span class="fc" id="L106">        ucsbRecommendationRequest.setDateRequested(incoming.getDateRequested());</span>
-<span class="fc" id="L107">        ucsbRecommendationRequest.setDone(incoming.getDone());</span>
+<span class="fc" id="L106">        ucsbRecommendationRequest.setExplanation(incoming.getExplanation());</span>
+<span class="fc" id="L107">        ucsbRecommendationRequest.setDateRequested(incoming.getDateRequested());</span>
+<span class="fc" id="L108">        ucsbRecommendationRequest.setDone(incoming.getDone());</span>
 
-<span class="fc" id="L109">        ucsbRecommendationRequestRepository.save(ucsbRecommendationRequest);</span>
+<span class="fc" id="L110">        ucsbRecommendationRequestRepository.save(ucsbRecommendationRequest);</span>
 
-<span class="fc" id="L111">        return ucsbRecommendationRequest;</span>
+<span class="fc" id="L112">        return ucsbRecommendationRequest;</span>
     }
 
     @Operation(summary= &quot;Delete a UCSBRecommendationRequest&quot;)
@@ -116,11 +117,11 @@ import java.time.LocalDateTime;
     @DeleteMapping(&quot;&quot;)
     public Object deleteUCSBRecommendationRequest(
             @Parameter(name=&quot;id&quot;) @RequestParam Long id) {
-<span class="fc" id="L119">                UCSBRecommendationRequest ucsbRecommendationRequest = ucsbRecommendationRequestRepository.findById(id)</span>
-<span class="fc" id="L120">                .orElseThrow(() -&gt; new EntityNotFoundException(UCSBRecommendationRequest.class, id));</span>
+<span class="fc" id="L120">                UCSBRecommendationRequest ucsbRecommendationRequest = ucsbRecommendationRequestRepository.findById(id)</span>
+<span class="fc" id="L121">                .orElseThrow(() -&gt; new EntityNotFoundException(UCSBRecommendationRequest.class, id));</span>
 
-<span class="fc" id="L122">        ucsbRecommendationRequestRepository.delete(ucsbRecommendationRequest);</span>
-<span class="fc" id="L123">        return genericMessage(&quot;UCSBRecommendationRequest with id %s deleted&quot;.formatted(id));</span>
+<span class="fc" id="L123">        ucsbRecommendationRequestRepository.delete(ucsbRecommendationRequest);</span>
+<span class="fc" id="L124">        return genericMessage(&quot;UCSBRecommendationRequest with id %s deleted&quot;.formatted(id));</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
