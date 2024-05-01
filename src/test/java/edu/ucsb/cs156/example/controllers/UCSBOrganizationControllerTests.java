@@ -230,7 +230,7 @@ public class UCSBOrganizationControllerTests extends ControllerTestCase {
 
                 UCSBOrganization zprOrig = UCSBOrganization.builder().orgCode("ZPR").orgTranslationShort("ZETA PHI RHO").orgTranslation("ZETA PHI RHO").inactive(false).build();
 
-                UCSBOrganization zprEdited = UCSBOrganization.builder().orgCode("ZPR").orgTranslationShort("ZETA PI RHO").orgTranslation("ZETA PI RHO").inactive(false).build();
+                UCSBOrganization zprEdited = UCSBOrganization.builder().orgCode("ZPR").orgTranslationShort("DELTAS").orgTranslation("DELTA SIGMA PI").inactive(true).build();
 
 
                 String requestBody = mapper.writeValueAsString(zprEdited);
