@@ -96,14 +96,14 @@ import javax.validation.Valid;
             @Parameter(name=&quot;id&quot;) @RequestParam Long id,
             @RequestBody @Valid Articles incoming) {
 
-<span class="fc" id="L99">        Articles articles = articlesRepository.findById(id)</span>
+<span class="fc" id="L99">            Articles articles = articlesRepository.findById(id)</span>
 <span class="fc" id="L100">                .orElseThrow(() -&gt; new EntityNotFoundException(Articles.class, id));</span>
 
-<span class="fc" id="L102">        articles.setTitle(incoming.getTitle());</span>
-<span class="fc" id="L103">        articles.setUrl(incoming.getUrl());</span>
-<span class="fc" id="L104">        articles.setExplanation(incoming.getExplanation());</span>
-<span class="fc" id="L105">        articles.setEmail(incoming.getEmail());</span>
-<span class="fc" id="L106">        articles.setDateAdded(incoming.getDateAdded());</span>
+<span class="fc" id="L102">            articles.setTitle(incoming.getTitle());</span>
+<span class="fc" id="L103">            articles.setUrl(incoming.getUrl());</span>
+<span class="fc" id="L104">            articles.setExplanation(incoming.getExplanation());</span>
+<span class="fc" id="L105">            articles.setEmail(incoming.getEmail());</span>
+<span class="fc" id="L106">            articles.setDateAdded(incoming.getDateAdded());</span>
 
 <span class="fc" id="L108">        articlesRepository.save(articles);</span>
 
