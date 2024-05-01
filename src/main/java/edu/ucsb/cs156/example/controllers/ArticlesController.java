@@ -65,5 +65,18 @@ public class ArticlesController extends ApiController {
             Articles savedArticles = articlesRepository.save(articles);
 
             return savedArticles;}
+    
+    //delete
+    @Operation(summary= "Delete an Article")    
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @DeleteMapping("")
+    public Object deleteArticle(
+        @Parameter(name="id") @RequestParam Long id) {
+            Articles articles = articlesRepository.findById(id)
+                    .orElseThrow(() -> new EntityNotFoundException(Articles.class, id));
+    
+            articlesRepository.delete(articles);
+            return genericMessage("Articles with id %s deleted".formatted(id));
+    }
 
 }
