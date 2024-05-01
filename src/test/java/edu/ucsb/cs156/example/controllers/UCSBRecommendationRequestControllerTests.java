@@ -286,15 +286,18 @@ public class UCSBRecommendationRequestControllerTests extends ControllerTestCase
                                 .dateNeeded(ldt2)
                                 .done(false)
                                 .build();
+                
+                LocalDateTime ldt3 = LocalDateTime.parse("2022-01-03T00:00:01");
 
+                LocalDateTime ldt4 = LocalDateTime.parse("2022-03-11T00:00:01");
 
                 UCSBRecommendationRequest ucsbRecommendationRequestEdited = UCSBRecommendationRequest.builder()
                                 .requesterEmail("adilahmed2")
                                 .professorEmail("pconrad1")
-                                .explanation("please")
-                                .dateRequested(ldt1)
-                                .dateNeeded(ldt2)
-                                .done(false)
+                                .explanation("different")
+                                .dateRequested(ldt3)
+                                .dateNeeded(ldt4)
+                                .done(true)
                                 .build();
 
                 String requestBody = mapper.writeValueAsString(ucsbRecommendationRequestEdited);

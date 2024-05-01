@@ -27,5 +27,5 @@ public class UCSBRecommendationRequest {
   private String explanation;
   private LocalDateTime dateRequested;
   private LocalDateTime dateNeeded;
-  private boolean done;
+  private Boolean done;
 }

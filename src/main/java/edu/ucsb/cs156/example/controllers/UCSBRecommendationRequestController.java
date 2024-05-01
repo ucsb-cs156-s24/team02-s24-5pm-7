@@ -103,6 +103,7 @@ public class UCSBRecommendationRequestController extends ApiController{
         ucsbRecommendationRequest.setRequesterEmail(incoming.getRequesterEmail());
         ucsbRecommendationRequest.setProfessorEmail(incoming.getProfessorEmail());
         ucsbRecommendationRequest.setDateNeeded(incoming.getDateNeeded());
+        ucsbRecommendationRequest.setExplanation(incoming.getExplanation());
         ucsbRecommendationRequest.setDateRequested(incoming.getDateRequested());
         ucsbRecommendationRequest.setDone(incoming.getDone());
 
