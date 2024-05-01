@@ -96,14 +96,14 @@ public class ArticlesController extends ApiController {
             @Parameter(name="id") @RequestParam Long id,
             @RequestBody @Valid Articles incoming) {
 
-        Articles articles = articlesRepository.findById(id)
+            Articles articles = articlesRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException(Articles.class, id));
 
-        articles.setTitle(incoming.getTitle());
-        articles.setUrl(incoming.getUrl());
-        articles.setExplanation(incoming.getExplanation());
-        articles.setEmail(incoming.getEmail());
-        articles.setDateAdded(incoming.getDateAdded());
+            articles.setTitle(incoming.getTitle());
+            articles.setUrl(incoming.getUrl());
+            articles.setExplanation(incoming.getExplanation());
+            articles.setEmail(incoming.getEmail());
+            articles.setDateAdded(incoming.getDateAdded());
 
         articlesRepository.save(articles);
 
