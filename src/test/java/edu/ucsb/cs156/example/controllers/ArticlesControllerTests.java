@@ -213,5 +213,60 @@ public class ArticlesControllerTests extends ControllerTestCase {
                assertEquals("Articles with id 15 not found", json.get("message"));
        }
 
+        // Tests for GET /api/ucsbdates?id=...
 
+        @Test
+        public void logged_out_users_cannot_get_by_id() throws Exception {
+                mockMvc.perform(get("/api/articles?id=15"))
+                                .andExpect(status().is(403)); // logged out users can't get by id
+        }
+
+        @WithMockUser(roles = { "USER" })
+        @Test
+        public void test_that_logged_in_user_can_get_by_id_when_the_id_exists() throws Exception {
+
+                // arrange
+                LocalDateTime ldt = LocalDateTime.parse("2022-04-20T00:00:00");
+
+                Articles article1 = Articles.builder()
+                            .title("Article1")
+                            .url("www.fakewebsite/a1.com")
+                            .explanation("This is article 1")
+                            .email("zhenbi@ucsb.edu")
+                            .dateAdded(ldt)
+                            .build();
+
+                when(articlesRepository.findById(eq(15L))).thenReturn(Optional.of(article1));
+
+                // act
+                MvcResult response = mockMvc.perform(get("/api/articles?id=15"))
+                                .andExpect(status().isOk()).andReturn();
+
+                // assert
+
+                verify(articlesRepository, times(1)).findById(eq(15L));
+                String expectedJson = mapper.writeValueAsString(article1);
+                String responseString = response.getResponse().getContentAsString();
+                assertEquals(expectedJson, responseString);
+
+        }
+        @WithMockUser(roles = { "USER" })
+        @Test
+        public void test_that_logged_in_user_can_get_by_id_when_the_id_does_not_exist() throws Exception {
+
+                // arrange
+
+                when(articlesRepository.findById(eq(7L))).thenReturn(Optional.empty());
+
+                // act
+                MvcResult response = mockMvc.perform(get("/api/articles?id=7"))
+                                .andExpect(status().isNotFound()).andReturn();
+
+                // assert
+
+                verify(articlesRepository, times(1)).findById(eq(7L));
+                Map<String, Object> json = responseToJson(response);
+                assertEquals("EntityNotFoundException", json.get("type"));
+                assertEquals("Articles with id 7 not found", json.get("message"));
+        }
 }
