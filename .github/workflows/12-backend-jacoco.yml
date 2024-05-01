@@ -59,5 +59,4 @@ jobs:
         clean: true # Automatically remove deleted files from the deploy branch
         target-folder: ${{env.prefix}}jacoco # The folder that we serve our files from
 
-
   
