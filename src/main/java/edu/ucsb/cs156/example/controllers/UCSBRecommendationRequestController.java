@@ -80,6 +80,7 @@ public class UCSBRecommendationRequestController extends ApiController{
         UCSBRecommendationRequest ucsbRecommendationRequest = new UCSBRecommendationRequest();
         ucsbRecommendationRequest.setRequesterEmail(requesterEmail);
         ucsbRecommendationRequest.setProfessorEmail(professorEmail);
+        ucsbRecommendationRequest.setExplanation(explanation);
         ucsbRecommendationRequest.setDateNeeded(dateNeeded);
         ucsbRecommendationRequest.setDateRequested(dateRequested);
         ucsbRecommendationRequest.setDone(done);
