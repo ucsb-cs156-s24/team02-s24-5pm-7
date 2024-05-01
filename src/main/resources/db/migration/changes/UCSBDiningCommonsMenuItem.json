@@ -2,7 +2,7 @@
     "databaseChangeLog": [
       {
         "changeSet": {
-          "id": "UCSBDININGCOMMONSMENUITEMS-1",
+          "id": "UCSBDININGCOMMONSMENUITEM-1",
           "author": "KateL",
           "preConditions": [
             {
@@ -27,7 +27,7 @@
                       "autoIncrement": true,
                       "constraints": {
                         "primaryKey": true,
-                        "primaryKeyName": "CONSTRAINT_MENUITEMS"
+                        "primaryKeyName": "CONSTRAINT_MENUITEM"
                       },
                       "name": "ID",
                       "type": "BIGINT"
