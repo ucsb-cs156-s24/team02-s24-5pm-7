@@ -65,6 +65,29 @@ import javax.validation.Valid;
 <span class="fc" id="L65">            Articles savedArticles = articlesRepository.save(articles);</span>
 
 <span class="fc" id="L67">            return savedArticles;}</span>
+            //Get
+            @Operation(summary= &quot;Get a single article&quot;)
+            @PreAuthorize(&quot;hasRole('ROLE_USER')&quot;)
+            @GetMapping(&quot;&quot;)
+            public Articles getById(
+                    @Parameter(name=&quot;id&quot;) @RequestParam Long id) {
+<span class="fc" id="L74">                Articles article = articlesRepository.findById(id)</span>
+<span class="fc" id="L75">                        .orElseThrow(() -&gt; new EntityNotFoundException(Articles.class, id));</span>
+        
+<span class="fc" id="L77">                return article;</span>
+            }
+    //delete
+    @Operation(summary= &quot;Delete an Article&quot;)    
+    @PreAuthorize(&quot;hasRole('ROLE_ADMIN')&quot;)
+    @DeleteMapping(&quot;&quot;)
+    public Object deleteArticle(
+        @Parameter(name=&quot;id&quot;) @RequestParam Long id) {
+<span class="fc" id="L85">            Articles articles = articlesRepository.findById(id)</span>
+<span class="fc" id="L86">                    .orElseThrow(() -&gt; new EntityNotFoundException(Articles.class, id));</span>
+    
+<span class="fc" id="L88">            articlesRepository.delete(articles);</span>
+<span class="fc" id="L89">            return genericMessage(&quot;Articles with id %s deleted&quot;.formatted(id));</span>
+    }
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
