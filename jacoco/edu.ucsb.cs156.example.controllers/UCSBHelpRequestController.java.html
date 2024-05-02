@@ -88,5 +88,26 @@ import java.time.LocalDateTime;
 <span class="fc" id="L88">        return genericMessage(&quot;UCSBHelpRequest with id %s deleted&quot;.formatted(id));</span>
     }
 
+    @Operation(summary= &quot;Update a single help request&quot;)
+    @PreAuthorize(&quot;hasRole('ROLE_ADMIN')&quot;)
+    @PutMapping(&quot;&quot;)
+    public UCSBHelpRequest updateUCSBHelpRequest(
+            @Parameter(name=&quot;id&quot;) @RequestParam Long id,
+            @RequestBody @Valid UCSBHelpRequest incoming) {
+
+<span class="fc" id="L98">        UCSBHelpRequest ucsbHelpRequest = ucsbHelpRequestRepository.findById(id)</span>
+<span class="fc" id="L99">                .orElseThrow(() -&gt; new EntityNotFoundException(UCSBHelpRequest.class, id));</span>
+
+<span class="fc" id="L101">        ucsbHelpRequest.setRequesterEmail(incoming.getRequesterEmail());</span>
+<span class="fc" id="L102">        ucsbHelpRequest.setTeamID(incoming.getTeamID());</span>
+<span class="fc" id="L103">        ucsbHelpRequest.setTableOrBreakoutRoom(incoming.getTableOrBreakoutRoom());</span>
+<span class="fc" id="L104">        ucsbHelpRequest.setRequestTime(incoming.getRequestTime());</span>
+<span class="fc" id="L105">        ucsbHelpRequest.setExplanation(incoming.getExplanation());</span>
+<span class="fc" id="L106">        ucsbHelpRequest.setSolved(incoming.getSolved());</span>
+
+<span class="fc" id="L108">        ucsbHelpRequestRepository.save(ucsbHelpRequest);</span>
+
+<span class="fc" id="L110">        return ucsbHelpRequest;</span>
+    }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
