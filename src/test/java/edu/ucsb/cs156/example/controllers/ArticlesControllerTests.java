@@ -292,7 +292,7 @@ public class ArticlesControllerTests extends ControllerTestCase {
                                 .title("EditedName")
                                 .url("www.fakewebsite-edited/a1.com")
                                 .explanation("This is edited article 1")
-                                .email("zhenbi@ucsb.edu")
+                                .email("zhenbi111@ucsb.edu")
                                 .dateAdded(ldt2)
                                 .build();
 
