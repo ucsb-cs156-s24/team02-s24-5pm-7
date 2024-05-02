@@ -203,61 +203,88 @@ public class UCSBHelpRequestControllerTests extends ControllerTestCase {
                 assertEquals("UCSBHelpRequest with id 15 not found", json.get("message"));
         }
 
-        // Tests for GET /api/ucsbhelprequest?id=...
+        // Tests for PUT /api/ucsbhelprequest?id=... 
 
-        /* @Test
-        public void logged_out_users_cannot_get_by_id() throws Exception {
-                mockMvc.perform(get("/api/ucsbhelprequest?id=7"))
-                                .andExpect(status().is(403)); // logged out users can't get by id
-        }
-
-        @WithMockUser(roles = { "USER" })
+        @WithMockUser(roles = { "ADMIN", "USER" })
         @Test
-        public void test_that_logged_in_user_can_get_by_id_when_the_id_exists() throws Exception {
-
+        public void admin_can_edit_an_existing_ucsbhelprequest() throws Exception {
                 // arrange
-                LocalDateTime requestTime = LocalDateTime.parse("2022-01-03T00:00:00");
 
-                UCSBHelpRequest ucsbHelpRequest = UCSBHelpRequest.builder()
+                LocalDateTime requestTime1 = LocalDateTime.parse("2022-01-03T00:00:00");
+                LocalDateTime requestTime2 = LocalDateTime.parse("2023-01-03T00:00:00");
+
+                UCSBHelpRequest ucsbHelpRequestOrig = UCSBHelpRequest.builder()
                                 .requesterEmail("gracefeng@ucsb.edu")
                                 .teamID("15")
                                 .tableOrBreakoutRoom("15")
-                                .requestTime(requestTime)
-                                .explanation("Trouble with team02")
+                                .requestTime(requestTime1)
+                                .explanation("Help")
                                 .solved(true)
                                 .build();
 
-                when(ucsbHelpRequestRepository.findById(eq(7L))).thenReturn(Optional.of(ucsbHelpRequest));
+                UCSBHelpRequest ucsbHelpRequestEdited = UCSBHelpRequest.builder()
+                                .requesterEmail("kittygrace101@gmail.com")
+                                .teamID("7")
+                                .tableOrBreakoutRoom("7")
+                                .requestTime(requestTime2)
+                                .explanation("Malding")
+                                .solved(false)
+                                .build();
+
+                String requestBody = mapper.writeValueAsString(ucsbHelpRequestEdited);
+
+                when(ucsbHelpRequestRepository.findById(eq(67L))).thenReturn(Optional.of(ucsbHelpRequestOrig));
 
                 // act
-                MvcResult response = mockMvc.perform(get("/api/ucsbhelprequest?id=7"))
+                MvcResult response = mockMvc.perform(
+                                put("/api/ucsbhelprequest?id=67")
+                                                .contentType(MediaType.APPLICATION_JSON)
+                                                .characterEncoding("utf-8")
+                                                .content(requestBody)
+                                                .with(csrf()))
                                 .andExpect(status().isOk()).andReturn();
 
                 // assert
-
-                verify(ucsbHelpRequestRepository, times(1)).findById(eq(7L));
-                String expectedJson = mapper.writeValueAsString(ucsbHelpRequest);
+                verify(ucsbHelpRequestRepository, times(1)).findById(67L);
+                verify(ucsbHelpRequestRepository, times(1)).save(ucsbHelpRequestEdited); // should be saved with correct user
                 String responseString = response.getResponse().getContentAsString();
-                assertEquals(expectedJson, responseString);
+                assertEquals(requestBody, responseString);
         }
 
-        @WithMockUser(roles = { "USER" })
+        
+        @WithMockUser(roles = { "ADMIN", "USER" })
         @Test
-        public void test_that_logged_in_user_can_get_by_id_when_the_id_does_not_exist() throws Exception {
-
+        public void admin_cannot_edit_ucsbhelprequest_that_does_not_exist() throws Exception {
                 // arrange
 
-                when(ucsbHelpRequestRepository.findById(eq(7L))).thenReturn(Optional.empty());
+                LocalDateTime requestTime1 = LocalDateTime.parse("2022-01-03T00:00:00");
+
+                UCSBHelpRequest ucsbEditedHelpRequest = UCSBHelpRequest.builder()
+                                .requesterEmail("kittygrace101@gmail.com")
+                                .teamID("7")
+                                .tableOrBreakoutRoom("7")
+                                .requestTime(requestTime1)
+                                .explanation("Malding")
+                                .solved(false)
+                                .build();
+
+                String requestBody = mapper.writeValueAsString(ucsbEditedHelpRequest);
+
+                when(ucsbHelpRequestRepository.findById(eq(67L))).thenReturn(Optional.empty());
 
                 // act
-                MvcResult response = mockMvc.perform(get("/api/ucsbhelprequest?id=7"))
+                MvcResult response = mockMvc.perform(
+                                put("/api/ucsbhelprequest?id=67")
+                                                .contentType(MediaType.APPLICATION_JSON)
+                                                .characterEncoding("utf-8")
+                                                .content(requestBody)
+                                                .with(csrf()))
                                 .andExpect(status().isNotFound()).andReturn();
 
                 // assert
-
-                verify(ucsbHelpRequestRepository, times(1)).findById(eq(7L));
+                verify(ucsbHelpRequestRepository, times(1)).findById(67L);
                 Map<String, Object> json = responseToJson(response);
-                assertEquals("EntityNotFoundException", json.get("type"));
-                assertEquals("UCSBHelpRequest with id 7 not found", json.get("message"));
-        } */
+                assertEquals("UCSBHelpRequest with id 67 not found", json.get("message"));
+
+        }
 }
