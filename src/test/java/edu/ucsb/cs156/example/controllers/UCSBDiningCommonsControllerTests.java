@@ -163,7 +163,6 @@ public class UCSBDiningCommonsControllerTests extends ControllerTestCase {
                 assertEquals(expectedJson, responseString);
         }
 
-
         // Tests for GET /api/ucsbdiningcommons?...
 
         @Test
@@ -301,7 +300,6 @@ public class UCSBDiningCommonsControllerTests extends ControllerTestCase {
                 String responseString = response.getResponse().getContentAsString();
                 assertEquals(requestBody, responseString);
         }
-
 
         @WithMockUser(roles = { "ADMIN", "USER" })
         @Test
