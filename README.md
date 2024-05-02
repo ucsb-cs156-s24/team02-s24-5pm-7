@@ -1,23 +1,22 @@
-# team03-s24-5pm-7
+# team02-s24-5pm-7
 ```
 | Table                       | Team Member  | Github Id     |
 |-----------------------------|--------------|---------------|
 | `UCSBDiningCommonsMenuItem` |  Kate        | katelarrick   |
-| `UCSBOrganization`          | (unassigned) |               |
-| `RecommendationRequest`     |  (unassigned)|               |
-| `MenuItemReview`            |  (unassigned)|               |
-| `HelpRequest`               |  (unassigned)|               |
-| `Articles`                  | June         | zhenbi93      |
+| `UCSBOrganization`          |  Aneesh      | aneeshtheplug |
+| `RecommendationRequest`     |  Adil        | adilahmed2    |
+| `MenuItemReview`            |  Koray       | koraykondakci |
+| `HelpRequest`               |  Grace       | gracefeng05   |
+| `Articles`                  |  June        | zhenbi93      |
 ```
 
 Instructions: <https://ucsb-cs156.github.io/s24/lab/team02.html>
 
-TODO: Add a link to the deployed Dokku app for your team here, e.g.
 
 Deployments:
 
-* Prod: <https://team02.dokku-17.cs.ucsb.edu>
-* QA: <https://team02-qa.dokku-17.cs.ucsb.edu>
+* Prod: <https://team02.dokku-15.cs.ucsb.edu>
+* QA: <https://team02-qa.dokku-15.cs.ucsb.edu>
 
 # Setup before running application
 
