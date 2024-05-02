@@ -23,4 +23,4 @@ repo_name: "TBD"
 repo: ucsb-cs156-s24/team02-s24-5pm-7
 owner: ucsb-cs156-s24
 repo_name: team02-s24-5pm-7
-pull_requests: []
+pull_requests: [{"author":{"id":"U_kgDOBtP22A","is_bot":false,"login":"katelarrick","name":""},"headRefName":"Kate-MenuItemsGet","number":66,"title":"MenuItems: get, put, delete","url":"https://github.com/ucsb-cs156-s24/team02-s24-5pm-7/pull/66"}]
